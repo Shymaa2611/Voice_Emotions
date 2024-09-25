@@ -66,7 +66,7 @@ Before running this application, ensure that you have the following installed:
 
 ```bash
 git clone https://github.com/Shymaa2611/Voice_Emotions.git
-cd Voice-Emotions
+cd Voice_Emotions
 ```
 ### Step 2: Build the Docker Image
 
