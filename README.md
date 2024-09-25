@@ -25,6 +25,7 @@ We leverage a **fine-tuned Whisper model by OpenAI** for accurate voice-to-text 
 - **HTML/CSS/JavaScript**: Frontend stack for creating a responsive UI.
 
 ## Project Structure
+```bash
 voice-emotions/
 │
 │── main.py           
@@ -47,7 +48,7 @@ voice-emotions/
 ├── requirements.txt      
 ├── Dockerfile           
 └── README.md             
-
+```
 ## Prerequisites
 
 Before running this application, ensure that you have the following installed:
