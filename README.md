@@ -57,7 +57,6 @@ Before running this application, ensure that you have the following installed:
 - **[Python 3.8+](https://www.python.org/)**: Required if running locally (without Docker).
 - **[FastAPI](https://fastapi.tiangolo.com/)**: Backend framework.
 - **[Jinja2](https://jinja.palletsprojects.com/)**: Templating system.
-- **[Whisper](https://github.com/Shymaa2611/Voice_Emotional_Recognition.git)**: OpenAI's model for speech recognition.
 
 ## Getting Started
 
