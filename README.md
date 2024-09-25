@@ -8,6 +8,7 @@ We leverage a **fine-tuned Whisper model by OpenAI** for accurate voice-to-text 
 
 ### DEMO
 [Watch ](media/project.mp4)
+![Demo](media/demo.gif)
 
 ## Features
 
