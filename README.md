@@ -4,13 +4,14 @@
 
 The **Voice Emotion Detection Application** is a web-based tool for analyzing and detecting emotions in audio files. Built using **FastAPI** with **Jinja2** for templating, the app provides an intuitive user interface for audio playback and emotion visualization. The application is containerized using Docker, ensuring a consistent and reproducible deployment environment.
 
+We leverage a **fine-tuned Whisper model by OpenAI** for accurate voice-to-text transcription, which serves as the input for emotion detection.
+
 ### DEMO
 [Watch ](media/project.mp4)
 
-
 ## Features
 
-- **Emotion Detection**: Automated emotion detection from audio samples.
+- **Emotion Detection**: Automated emotion detection from audio samples using a fine-tuned Whisper model.
 - **Audio Playback**: Seamless audio playback with real-time emotion visualization.
 - **Web Interface**: A responsive and user-friendly interface built with HTML, CSS, and JavaScript.
 - **Dockerized Deployment**: Easy deployment using Docker.
@@ -18,6 +19,7 @@ The **Voice Emotion Detection Application** is a web-based tool for analyzing an
 ## Technologies Used
 
 - **FastAPI**: High-performance framework for building APIs and web applications.
+- **Whisper by OpenAI**: Fine-tuned model for accurate transcription and emotion analysis.
 - **Jinja2**: Templating engine for rendering dynamic HTML pages.
 - **Docker**: Containerization for consistent deployment across environments.
 - **HTML/CSS/JavaScript**: Frontend stack for creating a responsive UI.
@@ -27,8 +29,8 @@ voice-emotions/
 │
 │── main.py           
 │── Model/              
-│   ├── Checkpoint
-│   ├── inference.py 
+│   ├── Checkpoint      
+│   ├── inference.py   
 │   ├── model.py  
 │── audio_files/              
 │   ├── angry.wav
@@ -54,13 +56,14 @@ Before running this application, ensure that you have the following installed:
 - **[Python 3.8+](https://www.python.org/)**: Required if running locally (without Docker).
 - **[FastAPI](https://fastapi.tiangolo.com/)**: Backend framework.
 - **[Jinja2](https://jinja.palletsprojects.com/)**: Templating system.
+- **[Whisper](https://github.com/Shymaa2611/Voice_Emotional_Recognition.git)**: OpenAI's model for speech recognition.
 
 ## Getting Started
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/Shymaa2611/Voice-Emotions.git
+git clone https://github.com/Shymaa2611/Voice_Emotions.git
 cd Voice-Emotions
 ```
 ### Step 2: Build the Docker Image
