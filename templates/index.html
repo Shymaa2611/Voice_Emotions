@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Voice Emotions</title>
+    <script>
+        let audioItems;
+        let currentIndex = 0;
+
+        function showNextAudio() {
+            if (currentIndex >= audioItems.length) {
+                currentIndex = 0; 
+            }
+
+            const currentAudioItem = audioItems[currentIndex];
+            const audioElement = currentAudioItem.querySelector("audio");
+            const imageElement = currentAudioItem.querySelector("img");
+
+            audioItems.forEach(item => {
+                item.style.display = "none"; 
+                const img = item.querySelector("img");
+                img.style.display = 'none'; 
+            });
+            currentAudioItem.style.display = "block";
+
+            audioElement.currentTime = 0; 
+            audioElement.play().catch(error => {
+                console.error("Audio playback failed: ", error);
+            });
+
+            setTimeout(() => {
+                imageElement.style.display = 'block';
+                imageElement.classList.add('fade-in');  
+            }, 1000);
+            audioElement.onended = () => {
+                setTimeout(() => {
+                    currentIndex++;
+                    showNextAudio(); 
+                }, 1000);  
+            };
+        }
+
+        function startPlayback(event) {
+            event.preventDefault();  
+            audioItems = document.querySelectorAll(".audio-item");
+            currentIndex = 0;
+            showNextAudio();
+            const form = document.getElementById("start-form");
+            form.style.display = "none";
+        }
+    </script>
+    <style>
+         body {
+            margin: 0; 
+            height: 100vh; 
+            color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #eaedf1;
+        }
+
+       
+        header {
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        .audio-item {
+            background: rgba(0, 0, 0, 0.7); 
+            padding: 20px; 
+            border-radius: 10px;
+            margin: 10px; 
+            text-align: center; 
+            display: none; 
+        }
+        .start-button {
+            width: 250px; 
+            height: 70px; 
+            background-color: rgb(25, 25, 228); 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            font-size: 25px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease, transform 0.2s ease; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            display: inline-block; 
+            text-align: center; 
+        }
+
+        .start-button:hover {
+            background-color: #357ABD; 
+            transform: translateY(-2px); 
+        }
+
+        .start-button:active {
+            transform: translateY(0); 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+           
+        </header>
+        
+        <form id="start-form" onsubmit="startPlayback(event)">
+            <button type="submit" class="start-button">Start</button>
+        </form>
+
+        <div class="audio-list">
+            {% for audio in audio_files %}
+            <div class="audio-item card">
+                <h3>{{ audio.label.capitalize() }}</h3> 
+                <audio controls class="audio-control">
+                    <source src="/audio/{{ audio.filename }}" type="audio/wav">
+                    Your browser does not support the audio tag.
+                </audio>
+                {% if audio.img_path %}
+                <img src="{{ audio.img_path }}" alt="{{ audio.label }}" class="label-image" style="display: none;">
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
