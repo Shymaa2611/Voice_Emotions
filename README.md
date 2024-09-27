@@ -1,4 +1,4 @@
-# Voice Emotion Detection Application
+# Voice Emotion Recognition Application
 
 ## Overview
 
